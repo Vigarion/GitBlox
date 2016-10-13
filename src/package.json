@@ -1,5 +1,5 @@
 {
-  "name": "rsync",
+  "name": "gitblox",
   "version": "1.1.5",
   "main": "index.js",
   "dependencies": {
@@ -14,8 +14,11 @@
     "electron-packager": "^7.5.1"
   },
   "author": "evaera",
+  "contributors": [
+    "Vigarion <robloxianrages@gmail.com> (https://www.roblox.com/users/10384/profile)"
+  ],
   "license": "GPL-3.0",
-  "description": "Third party IDE support for ROBLOX Studio in one click",
+  "description": "Git and IDE integration into ROBLOX.",
   "scripts": {
     "start": "electron .",
     "build:app": "cake build:app",
@@ -23,10 +26,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/evaera/RSync.git"
+    "url": "git+https://github.com/Vigarion/GitBlox.git"
   },
   "bugs": {
-    "url": "https://github.com/evaera/RSync/issues"
+    "url": "https://github.com/Vigarion/GitBlox/issues"
   },
-  "homepage": "https://github.com/evaera/RSync#readme"
+  "homepage": "https://github.com/Vigarion/GitBlox#readme"
 }

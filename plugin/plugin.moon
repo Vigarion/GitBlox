@@ -11,7 +11,7 @@ CoreGui 			= game\GetService "CoreGui"
 local hookChanges, sendScript, doSelection, alertBox, alertActive, resetCache, checkMoonHelper
 local justAdded, parseMixinsOut, parseMixinsIn, deleteScript, checkForPlaceName
 
-pmPath 		= "Documents\\ROBLOX\\RSync"
+pmPath 		= "Documents\\ROBLOX\\GitBlox"
 scriptCache = {}
 sourceCache = {}
 gameGUID 	= HttpService\GenerateGUID!
@@ -23,10 +23,10 @@ mixinRequire = "local __RSMIXINS=require(game.ReplicatedStorage.Mixins);__RSMIXI
 mixinString = "__RSMIXIN('%1', script, getfenv())"
 mixinStringPattern = "__RSMIXIN%('([%w_]+)', script, getfenv%(%)%)"
 moonBoilerplate = [=[
--- RSync Boilerplate --
+-- GitBlox Boilerplate --
 local function mixin(name, automatic)
 	if (not automatic) and (name == "autoload" or name == "client" or name == "server") then
-		error("RSync: Name \"" .. name .. "\" is a reserved name, and is automatically included in every applicable script.")
+		error("GitBlox: Name \"" .. name .. "\" is a reserved name, and is automatically included in every applicable script.")
 	end
 	
 	if not game.ReplicatedStorage:FindFirstChild("Mixins") then
@@ -52,7 +52,7 @@ mixin(game.Players.LocalPlayer and "client" or "server", true)
 ]=]
 -- A wrapper for `print` that prefixes plugin version information.--
 debug = (...) ->
-	print "[RSync build #{BUILD}] ", ...
+	print "[GitBlox build #{BUILD}] ", ...
 
 -- Creates a GUI alert to tell the user something, 
 -- also calls `debug` on the arguments. --
@@ -80,7 +80,7 @@ alert = (...) ->
 		if snapshot == alertActive
 			alertBox.Visible = false
 
--- Takes the injected mixin code and reverts it back to special RSync syntax. --
+-- Takes the injected mixin code and reverts it back to special GitBlox syntax. --
 parseMixinsOut = (source) ->
 	return source unless game.ReplicatedStorage\FindFirstChild("Mixins") and 
 		game.ReplicatedStorage.Mixins\IsA("ModuleScript")
@@ -374,7 +374,7 @@ checkForPlaceName = (obj) ->
 -- Create the alert box and place it in CoreGui. --
 with alertBox = Instance.new "TextLabel"
 	.Parent 				= Instance.new "ScreenGui", CoreGui
-	.Name 					= "RSync Alert"
+	.Name 					= "GitBlox Alert"
 	.BackgroundColor3 		= Color3.new 231/255, 76/255, 60/255
 	.TextColor3				= Color3.new 1, 1, 1
 	.BackgroundTransparency	= 0
@@ -396,7 +396,7 @@ if game.Name\match("Place[%d+]") and
 	-- Studio mode is both server and client. If not both, then user is testing in server/client mode. --
 	(game\GetService("RunService")\IsClient! and game\GetService("RunService")\IsServer!)
 		-- Create the plugin toolbar and button. --
-		toolbar = plugin\CreateToolbar "RSync"
+		toolbar = plugin\CreateToolbar "GitBlox"
 		button = toolbar\CreateButton "Open with Editor", "Open with system .lua editor (Ctrl+B)", "rbxassetid://478150446"
 
 		button.Click\connect doSelection
